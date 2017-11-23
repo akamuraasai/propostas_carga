@@ -1,11 +1,8 @@
 import { MongoClient } from 'mongodb';
-import assert from 'assert';
 
 import StreamArray from 'stream-json/utils/StreamArray';
 import path from 'path';
 import fs from 'fs';
-
-// import json from '../15k_propostas.json';
 
 const url = 'mongodb://localhost:27017/fies';
 
@@ -42,4 +39,20 @@ const insertDocuments = (db, data, callback) => {
     });
 }
 
-getData();
+const insertJson = () => {
+  const json = JSON.parse(fs.readFileSync('./12-5k_propostas.json'));
+  MongoClient.connect(url, (err, db) => {
+    console.time('insert_time');
+    insertDocuments(db, json, () => {
+      console.timeEnd('insert_time');
+      db.close();
+    });
+  });
+};
+
+const main = () =>
+  process.argv.filter(i => i === '100k').length > 0
+    ? getData()
+    : insertJson();
+
+main();

@@ -16,7 +16,7 @@ const proposta = () => ({
 
 const json = size => JSON.stringify(range(0, size).map(proposta));
 
-const theWayJsonNeedsToBe = size => fs.writeFile('15k_propostas.json', json(size));
+const theWayJsonNeedsToBe = size => fs.writeFile('12-5k_propostas.json', json(size));
 
 const makeTheJsonGreatAgain = (n, size) =>
   range(0, n)
@@ -35,8 +35,8 @@ const makeTheJsonGreatAgain = (n, size) =>
 
 const main = () =>
   process.argv.filter(i => i === '100k').length > 0
-    ? makeTheJsonGreatAgain(10, 10000)
-    : theWayJsonNeedsToBe(15000);
+    ? makeTheJsonGreatAgain(20, 5000)
+    : theWayJsonNeedsToBe(1250);
 
 console.time('write_file');
 main();
