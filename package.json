@@ -1,0 +1,24 @@
+{
+  "name": "carga_propostas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mock": "babel-node src/mock_fp_es6.js",
+    "carga": "babel-node src/carga.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^4.1.0",
+    "mongodb": "^2.2.33",
+    "ramda": "^0.25.0",
+    "stream-json": "^0.5.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
